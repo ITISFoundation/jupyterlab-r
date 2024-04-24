@@ -20,7 +20,6 @@ To publish in local throw-away registry:
 make publish-local
 ```
 
-
 ### Versioning
 Service version is updated with ``make version-*``
 
@@ -32,7 +31,7 @@ A template ci config file is created in ```.github/workflows/check-image.yml```,
 The required CI is already packaged.
 To build and push to the internal registry you must add it to the [oSparc/docker-publisher-osparc-services](https://git.speag.com/oSparc/docker-publisher-osparc-services) repository.
 
-## How to test the Application
+## How to test 
 Run locally and visit http://127.0.0.1:8888:
 ```console
 make run-local
