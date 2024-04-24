@@ -1,43 +1,45 @@
-# jupyterlab-r
+# JupyterLab with R (and Python) kernels
 
 JupyterLab coding environment for creating interactive Jupyter Notebooks with R (or Python)
 
-## Requirements
-- GNU Make
-- Python3
-- [``Docker``](https://docs.docker.com/get-docker/) (if you wish to build and test the service locally)
+## How to develop this o²S²PARC Service
 
-## Workflow
-### Create the Service
-1. Add your additional libraries to the appropriate in file [`env-config`](./env-config/)
-2. The [Dockerfile](jupyterlab-r/src/Dockerfile) shall be modified to install additional packages, software and/or Jupyter kernels (if something is need in addition to 1.)
-3. Optional: the [.osparc](.osparc) is the configuration folder and source of truth for metadata: describes service info and expected inputs/outputs of the service. If you need to change the inputs/outputs of the service, description, thumbnail, etc... check the [`metadata.yml`](./.osparc/metadata.yml) file
-4. Optional: if you need to change the start-up behavior of the service, modify the [`boot_notebook.bash`](./boot_scripts/boot_notebook.bash) file
-5. Optional (for testing): The service docker image may be built with ``make build`` (see "Useful Commands" below)
-6. Optional (for testing): The service docker image may be run locally with ``make run-local`` (see "Useful Commands" below)
+This Service was build using the [o²S²PARC cookiecutter for JupyterLab services](https://github.com/ITISFoundation/cookiecutter-osparc-jupyterlab-service)
+### Usage
 
-### Publish the Service on o²S²PARC
-Once you're happy with your code:
-1. Push it to a public repository.
-2. An automated pipeline (GitHub Actions) will build the Docker image for you (as in step 5)
-3. Wait for the GitHub pipeline to run successfully
-4. Check that the automated pipeline executes successfully
-5. Once the pipeline has run successfully, get in touch with [o²S²PARC Support](mailto:support@osparc.io), we will take care of the final steps!
-
-### Change the Service (after it has been published on o²S²PARC )
-If you wish to change your Service (e.g. add additional librarie), after it has been published on o²S²PARC, you have to **create a new version**:
-1. Go back to your repository
-2. Apply the desired changes
-3. Increase ("bump") the Service version: in your console execute: ``make version-patch``, or ``make version-minor``, or  ``make version-major``
-4. Commit and push the changes to your repository
-5. Wait for the GitHub/GitLab pipelines to run successfully
-5. Once the pipeline has run successfully, get in touch with [o²S²PARC Support](mailto:support@osparc.io), we will take care of publishing the new version!
-
-
-### Useful commands
+Build the module:
 ```console
-$ make help
-$ make build # This will build an o²S²PARC-compatible image (similar to `Docker build` command)
-$ make run-local # This will run the JupyterLab interface on your computer. Follow the instructions in your console to open it in your browser (useful e.g. to test that your code runs as expected)
+$ make build
 ```
+To run locally at and visit http://127.0.0.1:8888
+```console
+make run-local
+```
+To publish in local throw-away registry:
+```console
+make publish-local
+```
+
+
+### Versioning
+Service version is updated with ``make version-*``
+
+### CI/CD Integration 
+A template ci config file is created in ```.github/workflows/check-image.yml```, it checks that the image builds. When the workflow runs successfully for a new version (on the main branch), this is automatically detected and published on the internal registry (see also "Deployment on o²S²PARC" in this README)
+
+### Deployment on o²S²PARC
+
+The required CI is already packaged.
+To build and push to the internal registry you must add it to the [oSparc/docker-publisher-osparc-services](https://git.speag.com/oSparc/docker-publisher-osparc-services) repository.
+
+## How to test the Application
+Run locally and visit http://127.0.0.1:8888:
+```console
+make run-local
+```
+Or publish it in a local o²S²PARC deploy:
+```console
+make publish-local
+```
+Execute the [notebook demo](https://github.com/binder-examples/r/blob/02cff45a913fc23554ddac5664e8c2c9c6d6c826/index.ipynb) from the mybinder project.
 
