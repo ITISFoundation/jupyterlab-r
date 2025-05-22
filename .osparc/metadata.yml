@@ -2,7 +2,7 @@ name: JupyterLab R
 key: simcore/services/dynamic/jupyterlab-r
 type: dynamic
 integration-version: 2.0.0
-version: 1.0.1
+version: 1.0.2
 description: https://raw.githubusercontent.com/ZurichMedTech/s4l-assets/refs/heads/main/app/full/services/simcore_services_dynamic_jupyterlab-r.md
 icon: https://raw.githubusercontent.com/ZurichMedTech/s4l-assets/main/app/icons/s4l/simcore_services_dynamic_jupyterlab-r.png
 thumbnail: https://raw.githubusercontent.com/ZurichMedTech/s4l-assets/main/app/thumbnails/s4l/simcore_services_dynamic_jupyterlab-r.png
