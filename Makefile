@@ -10,7 +10,7 @@ export VCS_STATUS := $(if $(shell git status -s 2> /dev/null || echo unversioned
 export BUILD_DATE := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 export DOCKER_IMAGE_NAME ?= jupyterlab-r
-export DOCKER_IMAGE_TAG ?= 1.0.1
+export DOCKER_IMAGE_TAG ?= 1.0.2
 
 OSPARC_DIR:=$(CURDIR)/.osparc
 
@@ -22,7 +22,7 @@ define _bumpversion
 	# upgrades as $(subst $(1),,$@) version, commits and tags
 	@docker run -it --rm -v $(PWD):/${DOCKER_IMAGE_NAME} \
 		-u $(shell id -u):$(shell id -g) \
-		itisfoundation/ci-service-integration-library:v1.0.4 \
+		itisfoundation/ci-service-integration-library:v2.0.11 \
 		sh -c "cd /${DOCKER_IMAGE_NAME} && bump2version --verbose --list --config-file $(1) $(subst $(2),,$@)"
 endef
 
@@ -36,7 +36,7 @@ version-patch version-minor version-major: .bumpversion.cfg ## increases service
 compose-spec: ## runs ooil to assemble the docker-compose.yml file
 	@docker run --rm -v $(PWD):/${DOCKER_IMAGE_NAME} \
 		-u $(shell id -u):$(shell id -g) \
-		itisfoundation/ci-service-integration-library:v1.0.4 \
+		itisfoundation/ci-service-integration-library:v2.0.11 \
 		sh -c "cd /${DOCKER_IMAGE_NAME} && ooil compose"
 
 build: | compose-spec	## build docker image

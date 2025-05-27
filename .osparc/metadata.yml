@@ -2,10 +2,11 @@ name: JupyterLab R
 key: simcore/services/dynamic/jupyterlab-r
 type: dynamic
 integration-version: 2.0.0
-version: 1.0.1
-description: JupyterLab coding environment for creating interactive Jupyter Notebooks with R (or Python)
+version: 1.0.2
+description: https://raw.githubusercontent.com/ZurichMedTech/s4l-assets/refs/heads/main/app/full/services/simcore_services_dynamic_jupyterlab-r.md
+icon: https://raw.githubusercontent.com/ZurichMedTech/s4l-assets/main/app/icons/s4l/simcore_services_dynamic_jupyterlab-r.png
+thumbnail: https://raw.githubusercontent.com/ZurichMedTech/s4l-assets/main/app/thumbnails/s4l/simcore_services_dynamic_jupyterlab-r.png
 contact: iavarone@itis.swiss
-thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/1280px-R_logo.svg.png
 authors:
   - name: Elisabetta Iavarone
     email: iavarone@itis.swiss
